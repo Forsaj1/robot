@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180704 23:48:28.364" generator="Robot 3.0.4 (Python 2.7.15 on linux2)">
+<suite source="/opt/robotframework/tests" id="s1" name="Tests">
+<suite source="/opt/robotframework/tests/simpletest.robot" id="s1-s1" name="Simpletest">
+<test id="s1-s1-t1" name="Visit /test.php">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${test.php}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180704 23:48:28.457" level="INFO">Opening browser 'firefox' to base url 'https://www.clicktripz.com/test.php'.</msg>
+<status status="PASS" endtime="20180704 23:48:34.240" starttime="20180704 23:48:28.457"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180704 23:48:34.367" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180704 23:48:34.367" starttime="20180704 23:48:34.241"></status>
+</kw>
+<status status="PASS" endtime="20180704 23:48:34.368" critical="yes" starttime="20180704 23:48:28.456"></status>
+</test>
+<status status="PASS" endtime="20180704 23:48:34.369" starttime="20180704 23:48:28.384"></status>
+</suite>
+<status status="PASS" endtime="20180704 23:48:34.372" starttime="20180704 23:48:28.366"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Tests" pass="1">Tests</stat>
+<stat fail="0" id="s1-s1" name="Simpletest" pass="1">Tests.Simpletest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
