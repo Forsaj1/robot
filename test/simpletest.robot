@@ -23,7 +23,6 @@ ${NumberOfDeals} =  //*[@id="ct-header"]/ul
 
 
 *** Test Cases ***
-
 Launch an Exit Unit from /test.php
 	1. Load Test Page
 	2. Verify Page Loaded
@@ -32,7 +31,8 @@ Launch an Exit Unit from /test.php
 	5. Verify if There are Campaigns and Click on Search Button
     6. Get Browser Window Titles and Switch to Exit Unit
     7. Verify Pub ID
-	8. Click on Each Ad from Exit Unit and Make a ScreenShot
+    8. Capture the Exit Unit deeplink
+	9. Click on Each Ad from Exit Unit and Make a ScreenShot
 
 
 *** Keywords ***
@@ -63,17 +63,23 @@ End Web Test
 
 6. Get Browser Window Titles and Switch to Exit Unit
     @{Popup_Title}  Get Window Titles
+    Log  @{Popup_Title}[1]
+    Select Window  @{Popup_Title}[1]
+    sleep  2s
     Log  @{Popup_Title}[0]
     Select Window  @{Popup_Title}[0]
     @{Popup_Title}  Get Window Titles
     Log  @{Popup_Title}[1]
     Select Window  @{Popup_Title}[1]
-    Wait Until Page Contains  ${City}  5s
+    Wait Until Page Contains  ${City}  10s
 
 7. Verify Pub ID
     Page Should Contain  ${PubID}
 
-8. Click on Each Ad from Exit Unit and Make a ScreenShot
+8. Capture the Exit Unit deeplink
+    Log Location
+
+9. Click on Each Ad from Exit Unit and Make a ScreenShot
     Page Should Contain  ${City}
     #@{iframes}=  List Windows
     Mouse Over  ${NumberOfDeals}
@@ -87,16 +93,16 @@ End Web Test
     \  Mouse Over  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  Click Element  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  sleep  3s
-    \  maximize browser window
     \  @{Popup_Title}  Get Window Titles
     \  ${length} =	Get Length	${Popup_Title}
     \  ${arg}   ${val} =	 Run Keyword And Ignore Error	Should be true  ${length} > 2
     \  Run Keyword If	  '${arg}'=='PASS'
     \  ...  Run Keywords
-    \  ...  Log  @{Popup_Title}[2]
+    \  ...  Select Window  @{Popup_Title}[1]
+    \  ...  AND    Log  @{Popup_Title}[2]
     \  ...  AND    Select Window  @{Popup_Title}[2]
-    \  ...  AND    Take Screenshot
+    \  ...  AND    Capture Page Screenshot
     \  ...  AND    Close Window
-    \  ...  ELSE   Take Screenshot
+    \  ...  ELSE   Capture Page Screenshot
 
 
