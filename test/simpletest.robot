@@ -53,8 +53,8 @@ End Web Test
 
 4. Click on Calendar
     Click Element  ${CheckInDateCalendarIcon}
+    Click Element  ${CheckInDateCalendarIcon}
     sleep  1s
-	Click Element  ${CheckInDateCalendarIcon}
 
 5. Verify if There are Campaigns and Click on Search Button
     ${passed}   ${value} =	 Run Keyword And Ignore Error	Page Should Contain Element  ${FirstCampaign}
@@ -95,8 +95,8 @@ End Web Test
     \  ...  Run Keywords
     \  ...  Log  @{Popup_Title}[2]
     \  ...  AND    Select Window  @{Popup_Title}[2]
-    \  ...  AND    Capture Page Screenshot
+    \  ...  AND    Take Screenshot
     \  ...  AND    Close Window
-    \  ...  ELSE   Capture Page Screenshot
+    \  ...  ELSE   Take Screenshot
 
 
