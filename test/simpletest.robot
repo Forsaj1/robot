@@ -1,5 +1,6 @@
 *** Settings ***
-Library	  Selenium2Library
+Library	  SeleniumLibrary
+#Library  Selenium2Library
 Library   BuiltIn
 
 Test Setup  Begin Web Test
