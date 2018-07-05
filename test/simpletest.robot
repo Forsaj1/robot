@@ -15,7 +15,7 @@ ${URL} =  https://www.clicktripz.com/test.php
 ${FirstCampaign} =  id=a_provider_1_container
 ${CitySearchForm} =  id=city
 ${City} =  Honolulu
-${CheckInDate} =  //*[@id="hotelSmallSearchForm"]/div[2]/div
+${CheckInDateCalendarIcon} =  //*[@id="hotelSmallSearchForm"]/div[2]/div/img
 ${SearchButton} =  //*[@id="search-button"]
 ${PubID} =  PUBLISHER_ID = '4'
 ${NumberOfDeals} =  //*[@id="ct-header"]/ul
@@ -52,8 +52,9 @@ End Web Test
 	Input text  ${CitySearchForm}  ${City}
 
 4. Click on Calendar
-    Click Element  ${CheckInDate}
-	Click Element  ${CitySearchForm}
+    Click Element  ${CheckInDateCalendarIcon}
+    sleep  1s
+	Click Element  ${CheckInDateCalendarIcon}
 
 5. Verify if There are Campaigns and Click on Search Button
     ${passed}   ${value} =	 Run Keyword And Ignore Error	Page Should Contain Element  ${FirstCampaign}
