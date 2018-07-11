@@ -1,6 +1,6 @@
 *** Settings ***
 Library	  SeleniumLibrary
-#Library  Selenium2Library
+Library   Selenium2Library
 Library   BuiltIn
 
 Test Setup  Begin Web Test
@@ -19,7 +19,7 @@ ${CheckInDateCalendarIcon} =  //*[@id="hotelSmallSearchForm"]/div[2]/div/img
 ${SearchButton} =  //*[@id="search-button"]
 ${PubID} =  PUBLISHER_ID = '4'
 ${NumberOfDeals} =  //*[@id="ct-header"]/ul
-
+${EU_Title} =  Compare Travel Sites
 
 
 *** Test Cases ***
@@ -41,6 +41,7 @@ Begin Web Test
 
 End Web Test
     Close Browser
+
 1. Load Test Page
     Go to  ${URL}
 
@@ -75,7 +76,6 @@ End Web Test
 
 7. Verify Pub ID
     Page Should Contain  ${PubID}
-
 8. Capture the Exit Unit deeplink
     Log Location
 
@@ -90,6 +90,7 @@ End Web Test
     : FOR  ${Advertiser}  IN RANGE  1  ${Deals}+1
     \  @{Popup_Title}  Get Window Titles
     \  Select Window  @{Popup_Title}[1]
+    \  Wait For Condition    return window.document.title == "${EU_Title}"
     \  Mouse Over  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  Click Element  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  sleep  3s
@@ -101,6 +102,7 @@ End Web Test
     \  ...  Select Window  @{Popup_Title}[1]
     \  ...  AND    Log  @{Popup_Title}[2]
     \  ...  AND    Select Window  @{Popup_Title}[2]
+    \  ...  AND    Wait For Condition    return window.document.title !== "undefined"
     \  ...  AND    Capture Page Screenshot
     \  ...  AND    Close Window
     \  ...  ELSE   Capture Page Screenshot
