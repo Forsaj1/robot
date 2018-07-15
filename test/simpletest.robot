@@ -90,7 +90,7 @@ End Web Test
     : FOR  ${Advertiser}  IN RANGE  1  ${Deals}+1
     \  @{Popup_Title}  Get Window Titles
     \  Select Window  @{Popup_Title}[1]
-    \  Wait For Condition    return window.document.title == "${EU_Title}"
+    \  Wait For Condition    return window.document.title == "${EU_Title}"  20s
     \  Mouse Over  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  Click Element  //*[@id="ct-header"]/ul/li[${Advertiser}]/div/a/span[1]/img
     \  sleep  3s
@@ -102,7 +102,9 @@ End Web Test
     \  ...  Select Window  @{Popup_Title}[1]
     \  ...  AND    Log  @{Popup_Title}[2]
     \  ...  AND    Select Window  @{Popup_Title}[2]
-    \  ...  AND    Wait For Condition    return window.document.title !== "undefined"
+    \  ...  AND    Wait For Condition    return window.document.title !== "undefined"  30s
+    \  ...  AND    Select Window  @{Popup_Title}[1]
+    \  ...  AND    Select Window  @{Popup_Title}[2]
     \  ...  AND    Capture Page Screenshot
     \  ...  AND    Close Window
     \  ...  ELSE   Capture Page Screenshot
